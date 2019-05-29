@@ -51,8 +51,8 @@ class MakeBarcodeActivity : AppCompatActivity() {
         { response ->
 
             val responseTrimed = response.substringBefore("<!-- End //]]>")
-            Toast.makeText(applicationContext, "$responseTrimed", Toast.LENGTH_SHORT).show()
 
+            println()
             val jsonObject = JSONObject(responseTrimed)
             val success = jsonObject.getString("success")
 
@@ -90,7 +90,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
 
     }
     companion object {
-        private const val URL = "http://192.168.56.1/krypto/addCode.php"
+        private const val URL = "http://kryptoprojekt.prv.pl/addCode.php"
     }
 }
 
