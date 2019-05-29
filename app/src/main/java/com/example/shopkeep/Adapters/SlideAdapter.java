@@ -82,8 +82,6 @@ public class SlideAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 if(position==0) {
-                    Toast.makeText(context,"clicked1",Toast.LENGTH_SHORT).show();
-
                     Intent intent = new Intent(context, BardercodeActivity.class);
                     context.startActivity(intent);
                 }

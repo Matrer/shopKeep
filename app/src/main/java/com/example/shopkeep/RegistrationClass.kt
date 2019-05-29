@@ -18,7 +18,7 @@ class RegistrationClass : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regestration_class)
 
-        buttonRegisterShop.setOnClickListener { registration() }
+        buttonRegisterShop.setOnClickListener { registration();}
     }
 
 
@@ -55,6 +55,7 @@ class RegistrationClass : Activity() {
             if (success == "1")
             {
                 Toast.makeText(this, "Sukces!", Toast.LENGTH_LONG).show()
+                finish()
             }
 
         }, Response.ErrorListener {

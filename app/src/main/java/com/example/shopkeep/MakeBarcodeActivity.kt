@@ -59,6 +59,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
             if (success == "1")
             {
                 Toast.makeText(this,"Dodano",Toast.LENGTH_SHORT).show()
+                finish()
             }
             else if(success == "0")
             {
