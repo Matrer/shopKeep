@@ -14,7 +14,7 @@ import java.util.*
 
 class MakeBarcodeActivity : AppCompatActivity() {
 
-    val login = "Matrer"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
 
             val responseTrimed = response.substringBefore("<!-- End //]]>")
 
-            println()
+
             val jsonObject = JSONObject(responseTrimed)
             val success = jsonObject.getString("success")
 
@@ -76,11 +76,15 @@ class MakeBarcodeActivity : AppCompatActivity() {
             override fun getParams(): Map<String, String>
             {
                 val password = Shared.getPassword(applicationContext)
+                val login = Shared.getUserName(applicationContext)
+                println(password)
+                println(login)
                 val params = HashMap<String, String>()
                 params["login"] = login
-                params["code"] = Java_Cipher.encrypt(password,code)
-                params["name"] = Java_Cipher.encrypt(name,code)
-                params["price"] = Java_Cipher.encrypt(price,code)
+                params["code"] = code
+                params["name"] = name
+                params["price"] = price
+                params["password"] = password
                 return params
             }
         }

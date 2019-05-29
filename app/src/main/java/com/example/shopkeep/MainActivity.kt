@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
 
                 }
+
+
             }
             else
             {
@@ -97,7 +99,6 @@ class MainActivity : AppCompatActivity() {
         },Response.ErrorListener
         {
             Toast.makeText(applicationContext, "Błąd Połączenia! ${it.message}", Toast.LENGTH_SHORT).show()
-            startActivity(intent)
         })
         {
             override fun getParams(): Map<String, String>
