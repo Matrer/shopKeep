@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ public class BardercodeActivity extends AppCompatActivity {
     CameraSource cameraSource;
     TextView textView;
     BarcodeDetector barcodeDetector;
+
+    String qrCode = "";
     //Intent produktAct;
 
 
@@ -37,6 +40,21 @@ public class BardercodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bardercode_main);
         surfaceView = findViewById(R.id.camerapreview);
         textView = findViewById(R.id.textView);
+        findViewById(R.id.buttonAccept).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(qrCode.length()  == 13)
+                {
+                    Intent intent = new Intent(getApplicationContext(), MakeBarcodeActivity.class);
+                    intent.putExtra("barcode",qrCode);
+                    getApplicationContext().startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Niepoprawny kod kreskowy",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         barcodeDetector = new BarcodeDetector.Builder(this).
                 setBarcodeFormats(Barcode.EAN_13).build();
@@ -94,8 +112,8 @@ public class BardercodeActivity extends AppCompatActivity {
                            //startActivity(produktAct)
 
 
-
-                            textView.setText(qrCodes.valueAt(0).displayValue);
+                            qrCode = qrCodes.valueAt(0).displayValue;
+                            textView.setText(qrCode);
 
 
 
