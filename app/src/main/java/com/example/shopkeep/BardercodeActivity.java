@@ -1,8 +1,10 @@
 package com.example.shopkeep;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +22,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
 
-public class bardercodeMainActivity extends AppCompatActivity {
+public class BardercodeActivity extends AppCompatActivity {
 
     SurfaceView surfaceView;
     CameraSource cameraSource;
@@ -33,14 +35,16 @@ public class bardercodeMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bardercode_main);
-        surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
-        textView = (TextView) findViewById(R.id.textView);
+        surfaceView = findViewById(R.id.camerapreview);
+        textView = findViewById(R.id.textView);
 
         barcodeDetector = new BarcodeDetector.Builder(this).
                 setBarcodeFormats(Barcode.EAN_13).build();
 
-        cameraSource = new CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(640, 480).build();
-
+        cameraSource = new CameraSource.Builder(this, barcodeDetector)
+                .setAutoFocusEnabled(true)
+                .setRequestedPreviewSize(640, 480)
+                .build();
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -58,14 +62,9 @@ public class bardercodeMainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { }
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
-
-
                 cameraSource.stop();
             }
         });
@@ -88,18 +87,16 @@ public class bardercodeMainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             textView.setText(qrCodes.valueAt(0).displayValue);
-                            Toast.makeText(getApplicationContext(),qrCodes.valueAt(0).displayValue,Toast.LENGTH_LONG);
-
-                            /*Vibrator vibraton = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
-                            vibraton.vibrate(1000);
+                            Vibrator vibraton = (Vibrator)getApplication().getSystemService(Context.VIBRATOR_SERVICE);
+                         //   vibraton.vibrate(500);
                             //produktAct = new Intent(getApplicationContext(), productActivity.class);
                            // produktAct.putExtra("kod", textView.getText());
                            //startActivity(produktAct)
-                           */
+
 
 
                             textView.setText(qrCodes.valueAt(0).displayValue);
-                          ;
+
 
 
 
@@ -116,9 +113,7 @@ public class bardercodeMainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
 }
 

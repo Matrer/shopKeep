@@ -1,4 +1,4 @@
-package com.example.shopkeep;
+package com.example.shopkeep.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.shopkeep.BardercodeActivity;
+import com.example.shopkeep.MakeBarcodeActivity;
+import com.example.shopkeep.R;
+
 
 public class SlideAdapter extends PagerAdapter {
     Context context;
@@ -33,8 +38,8 @@ public class SlideAdapter extends PagerAdapter {
     }   ;
     // list of descriptions
     public String[] lst_description = {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
+            "Zeskanuj produkt aby dodać go do osobistego koszyka internetowego",
+            "Wpisz kod kreskowy ręcznie jeżeli skanowanie jest niemożliwe",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     };
     // list of background colors
@@ -79,11 +84,14 @@ public class SlideAdapter extends PagerAdapter {
                 if(position==0) {
                     Toast.makeText(context,"clicked1",Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(context, bardercodeMainActivity.class);
+                    Intent intent = new Intent(context, BardercodeActivity.class);
                     context.startActivity(intent);
                 }
 
-                if(position==1) Toast.makeText(context,"clicked2",Toast.LENGTH_SHORT).show();
+                if(position==1){
+                    Intent intent = new Intent(context, MakeBarcodeActivity.class);
+                    context.startActivity(intent);
+                }
                 if(position==2) Toast.makeText(context,"clicked3",Toast.LENGTH_SHORT).show();
             }
         });

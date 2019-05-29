@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_gravity="center"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:adjustViewBounds="false"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/editText12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/shop" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/editTextLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -37,17 +34,12 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Login"
+        android:hint="Login"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -56,15 +48,11 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/TextLogin"
         android:layout_width="210dp"
         android:layout_height="40dp"
         android:layout_marginStart="100dp"
@@ -73,13 +61,11 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/rounded_button"
-        android:text="Loguj!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        android:text="Loguj"
+        android:textColor="@android:color/background_light" />
 
     <Button
-        android:id="@+id/regestration"
+        android:id="@+id/buttonRegisterShop"
         android:layout_width="210dp"
         android:layout_height="40dp"
         android:layout_marginStart="100dp"
@@ -88,9 +74,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/rounded_button"
-        android:text="Rejestruj!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        android:text="Rejestruj"
+        android:textColor="@android:color/background_light" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

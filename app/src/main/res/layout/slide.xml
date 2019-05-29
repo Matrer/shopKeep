@@ -20,15 +20,17 @@
         android:layout_marginTop="40dp"
         android:textColor="#fff"
         android:id="@+id/titleOpisIcon"/>
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/opisTitleIcon"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#fff"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
+        android:gravity="center"
         android:text="Ala ma kota kot ma ale i dalszy tekst ciekawostki etc."
-        android:id="@+id/opisTitleIcon"/>
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="14sp" />
 
 
 </LinearLayout>
