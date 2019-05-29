@@ -1,16 +1,16 @@
 package com.example.shopkeep
 
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.shopkeep.Static.Shared
+import com.io.wiemcozjem.Crypt.Java_Cipher
 import kotlinx.android.synthetic.main.activity_make_barcode.*
 import org.json.JSONObject
-import java.lang.Exception
-import java.util.HashMap
+import java.util.*
 
 class MakeBarcodeActivity : AppCompatActivity() {
 
@@ -51,6 +51,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
         { response ->
 
             val responseTrimed = response.substringBefore("<!-- End //]]>")
+            Toast.makeText(applicationContext, "$responseTrimed", Toast.LENGTH_SHORT).show()
 
             val jsonObject = JSONObject(responseTrimed)
             val success = jsonObject.getString("success")
@@ -59,10 +60,12 @@ class MakeBarcodeActivity : AppCompatActivity() {
             {
                 Toast.makeText(this,"Dodano",Toast.LENGTH_SHORT).show()
             }
-            else
+            else if(success == "0")
             {
                 Toast.makeText(this,"Wystąpił problem",Toast.LENGTH_SHORT).show()
             }
+
+
 
         }, Response.ErrorListener
         {
@@ -72,11 +75,12 @@ class MakeBarcodeActivity : AppCompatActivity() {
         {
             override fun getParams(): Map<String, String>
             {
+                val password = Shared.getPassword(applicationContext)
                 val params = HashMap<String, String>()
                 params["login"] = login
-                params["code"] = code
-                params["name"] = name
-                params["price"] = price
+                params["code"] = Java_Cipher.encrypt(password,code)
+                params["name"] = Java_Cipher.encrypt(name,code)
+                params["price"] = Java_Cipher.encrypt(price,code)
                 return params
             }
         }
@@ -86,7 +90,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
 
     }
     companion object {
-        private const val URL = "http://kryptoprojekt.prv.pl/login.php"
+        private const val URL = "http://192.168.56.1/krypto/addCode.php"
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.shopkeep
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +10,8 @@ import android.widget.Toast
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.shopkeep.Static.Shared
+import com.google.android.gms.flags.impl.SharedPreferencesFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import java.util.*
@@ -25,6 +28,10 @@ class MainActivity : AppCompatActivity() {
             openRegistrationActivity()
         }
         TextLogin.setOnClickListener { loginFunction() }
+
+        Toast.makeText(this,Shared.getUserName(applicationContext),Toast.LENGTH_SHORT).show()
+        editTextLogin.setText(Shared.getUserName(applicationContext))
+        editTextPassword.setText(Shared.getPassword(applicationContext))
     }
 
 
@@ -75,6 +82,9 @@ class MainActivity : AppCompatActivity() {
 
                     val intent = Intent(applicationContext, MenuActivity::class.java)
                     intent.putExtra("login", login)
+
+                    Shared.save(login,password,applicationContext)
+
                     startActivity(intent)
 
                 }
