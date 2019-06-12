@@ -78,6 +78,6 @@ class RegistrationClass : Activity() {
     }
 
     companion object {
-        private const val URL = "http://kryptoprojekt.prv.pl/register.php"
+        private const val URL = "https://kryptoprojekt.prv.pl/register.php"
     }
 }

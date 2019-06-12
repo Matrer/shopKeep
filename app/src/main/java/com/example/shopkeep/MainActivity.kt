@@ -116,6 +116,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val URL = "http://kryptoprojekt.prv.pl/login.php"
+        private const val URL = "https://kryptoprojekt.prv.pl/login.php"
     }
 }

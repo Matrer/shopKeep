@@ -95,7 +95,7 @@ class MakeBarcodeActivity : AppCompatActivity() {
 
     }
     companion object {
-        private const val URL = "http://kryptoprojekt.prv.pl/addCode.php"
+        private const val URL = "https://kryptoprojekt.prv.pl/addCode.php"
     }
 }
 

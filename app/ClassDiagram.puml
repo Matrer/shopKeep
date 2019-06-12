@@ -1,0 +1,101 @@
+@startuml
+
+
+
+
+
+class MainActivity {
+
+    override onCreate(savedInstanceState: Bundle?)
+    private openRegistrationActivity()
+    private loginFunction()
+    private login(login: String, password: String)
+
+    static String URL
+}
+MainActivity <|-- AppCompatActivity
+
+class BardercodeActivity {
+    SurfaceView surfaceView;
+    CameraSource cameraSource;
+    TextView textView;
+    BarcodeDetector barcodeDetector;
+    String qrCode
+
+    protected void onCreate(Bundle savedInstanceState)
+}
+BardercodeActivity  <|-- AppCompatActivity
+
+class MenuActivity extends AppCompatActivity {
+    private ViewPager viewPager;
+    private SlideAdapter myadapter;
+    private String login;
+
+    protected void onCreate(Bundle savedInstanceState)
+}
+
+class RegistrationClass {
+
+
+    override onCreate(savedInstanceState: Bundle?)
+
+    private fun registration()
+
+
+    private String URL
+
+}
+RegistrationClass  <|-- Activity
+
+class MakeBarcodeActivity
+{
+
+    sendBarcode(code:String, name:String, price:String)
+    private String URL = "http://kryptoprojekt.prv.pl/addCode.php"
+
+}
+MakeBarcodeActivity <|-- AppCompatActivity
+
+class Shared {
+    val PREFS_NAME
+    private static String PREF_USERNAME
+    private static String PREF_PASSWORD
+
+    static save(username:String, password:String,context:Context)
+    static getPassword(context:Context):String
+    static getUserName(context:Context):String
+}
+
+class Java_Cipher {
+
+    private val CIPHER_NAME
+    private val CIPHER_KEY_LEN
+
+
+    static encrypt(key: String, data: String): String
+    static decrypt(key: String, data: String): String
+
+}
+
+
+class SlideAdapter extends PagerAdapter {
+    Context context;
+    LayoutInflater inflater;
+    private ImageView imgslide;
+
+    public int[] lst_images
+    public String[] lst_title
+    public String[] lst_description
+    public int[]  lst_backgroundcolor
+
+
+    public SlideAdapter(Context context)
+    public int getCount()
+
+    public boolean isViewFromObject(View view, Object object)
+
+    public Object instantiateItem(ViewGroup container, final int position)
+    public void destroyItem(ViewGroup container, int position, Object object)
+}
+
+@enduml
